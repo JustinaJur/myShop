@@ -12,10 +12,12 @@ body {
 .products-container{
 display: grid;
 grid-template-columns: repeat(3, 1fr);
-grid-gap: 15px;
+grid-gap: 40px;
 margin: 15px 25px;
 
+
 }
+
 
 .component{
 display: grid;
@@ -27,6 +29,15 @@ display: grid;
 }
 .SearchBar{
   margin: 25px;
+}
+
+img{
+width: 250px;
+height: 100px;
+}
+
+h3, h4{
+  margin: 0;
 }
 
 

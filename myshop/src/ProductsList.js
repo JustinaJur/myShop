@@ -7,18 +7,10 @@ export default function ProductsList(props) {
     return (
 
         <div>
-
-
-            {/* <input
-                type="text"
-                onChange={(event) => }
-
-            /> */}
-
-
             <div className="products-container">
-                {props.products.map(product =>
-                    // <ul>
+
+                {/* {props.products.map(product =>
+                    <ul>
                     <li className="component">
                         {product.name}
                         <img
@@ -35,8 +27,10 @@ export default function ProductsList(props) {
                         > add to cart </button>
 
                     </li>
-                    // </ul>
-                )}
+                    </ul>
+                )} */}
+
+
             </div>
         </div>
     )

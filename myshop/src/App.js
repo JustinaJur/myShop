@@ -6,74 +6,50 @@ import ProductsList from './ProductsList'
 import duomenys from './products.json'
 import Header from './Header'
 import SearchBar from './SearchBar'
+import Item from './Item'
 
 
 class App extends Component {
-  state = {
-    products: [],
-    value: '',
-    found: ''
+  constructor() {
+    super()
+    this.state = {
+      value: '',
+      search: '',
+      duomenys: duomenys
+    }
   }
 
-  // [duomenys.products.map(product =>
-  //   <div>
-  //     {product.name}
-  //     <img
-  //       height={100}
-  //       src={`/products/${product.image}`}
-  //       title={product.name}
-  //     />
-  //     {product.description}
-  //     ${product.price}
-  //     <button style={{ width: "100px" }}
-  //     > add to cart </button>
-  //   </div>
 
-  // )]
-
-
-  // updatedList = duomenys.products.filter(function (item) {
-  //   return item.search(event.target.value) !== -1;
-  // });
-
-  handleChangeValue = e => this.setState({
-    //gaunam sita is input lauko
-    value: e.target.value,
-
-    found: [duomenys.products.filter((product) =>
-      <div>
-        {product.name === e.target.value}
-
-      // product.search(event.target.value) !== -1;
-
-      </div>
-    )]
-  })
-  // findProducts = () => {
-  //   const name = duomenys.products.map(product =>
-  //     this.setState({ products: product.name }))
-
-  // }
-
+  //get value from input in SEARCHBAR component
+  handleChangeValue = e => {
+    this.setState({
+      search: e.target.value.toLowerCase(),
+    })
+  }
 
 
   render() {
+
+    // let search = this.state.search;
+    let duomenys = this.state.duomenys;
+
+
     return (
       <div>
         <Header />
         <SearchBar
-          // onSubmit={this.findProducts}
-          value={this.state.value}
+          // value={this.state.value}
+          //passing data from child to parent
           parodykkaivedei={this.handleChangeValue}
         />
+        {/* <ProductsList products={duomenys.products} /> */}
+        {/* <p className="products-container">{filteredData}</p> */}
 
-
-
-        <p> found items: {this.state.found}</p>
-
-
-
-        <ProductsList products={duomenys.products} />
+        <Item className="products-container"
+          search={this.state.search}
+          duomenys={duomenys}
+        // funkcija={this.state.funkcija}
+        />
 
       </div >
     );

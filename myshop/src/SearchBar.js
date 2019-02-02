@@ -32,12 +32,7 @@ class SearchBar extends Component {
 
 
 
-
-                    // onChange={(event) => this.setState({
-                    //     ieskoma: event.target.value
-                    // })}
-                    // value={this.state.ieskoma}
-                    //placeholder="Search products..."
+                        placeholder="Search by name..."
                     />
                 </form>
                 {/* <p>{this.state.ieskoma}</p> */}
