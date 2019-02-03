@@ -2,36 +2,29 @@ import React, { Component } from 'react';
 
 
 class SearchBar extends Component {
-    constructor() {
-        super()
-        this.state = {
-            // ieskoma: ''
-        }
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //         // ieskoma: ''
+    //     }
 
-    }
+    // }
 
-    onFormSubmit = (ev) => {
-        ev.preventDefault();
-        // console.log(this.state.ieskoma);
-        // this.props.onSubmit(this.state.ieskoma);
-    }
-
+    // onFormSubmit = (ev) => {
+    //     ev.preventDefault();
+    // console.log(this.state.ieskoma);
+    // this.props.onSubmit(this.state.ieskoma);
 
 
     render() {
         return (
             <div className="SearchBar">
-                <form onSubmit={this.onFormSubmit}>
+                <form onSubmit={(e) => this.props.onFormSubmit(e)}>
                     <label>Search products: </label>
                     <input
                         type="text"
-                        value={this.props.value}
+                        // value={this.props.value}
                         onChange={this.props.parodykkaivedei}
-
-
-
-
-
                         placeholder="Search by name..."
                     />
                 </form>

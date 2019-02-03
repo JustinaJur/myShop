@@ -39,5 +39,8 @@ height: 100px;
 h3, h4{
   margin: 0;
 }
+.sticky {
+  position: sticky;
+}
 
 
