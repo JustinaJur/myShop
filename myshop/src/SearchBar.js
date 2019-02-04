@@ -19,12 +19,14 @@ class SearchBar extends Component {
     render() {
         return (
             <div className="SearchBar">
-                <form onSubmit={(e) => this.props.onFormSubmit(e)}>
+                <form>
+                    {/* onSubmit={(e) => this.props.onFormSubmit(e)}> */}
                     <label>Search products: </label>
                     <input
                         type="text"
-                        // value={this.props.value}
-                        onChange={this.props.parodykkaivedei}
+                        value={this.props.value}
+                        //we send input to App
+                        onChange={this.props.handleChangeValue}
                         placeholder="Search by name..."
                     />
                 </form>
