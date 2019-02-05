@@ -18,6 +18,7 @@ class SearchBar extends Component {
 
     render() {
         return (
+
             <div className="SearchBar">
                 <form>
                     {/* onSubmit={(e) => this.props.onFormSubmit(e)}> */}

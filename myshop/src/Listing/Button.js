@@ -5,20 +5,24 @@ class Button extends React.Component {
     state = {
         selected: [],
         howManyInCart: 0,
+        item: ''
     }
-    addToCart = () => {
-        let selected = this.state.selected;
 
+    addToCart = () => {
+        //console.log(this.props.item);
+        let selected = this.state.selected;
         this.setState({
             selected: [...selected, this.props.item.name],
             howManyInCart: selected.length + 1
         })
-        console.log(selected)
+
         // var selectedHA = selected.filter((item) => item === this.props.item.name);
         // this.setState({
         //     howManyInCart: selectedHA.length
         // })
     }
+
+
     removeFromCart() {
         let selected = this.state.selected;
         let array = [...selected]; // make a separate copy of the array
@@ -30,7 +34,12 @@ class Button extends React.Component {
                 howManyInCart: selected.length - 1
             });
         }
+
+
     }
+
+
+
 
 
     render() {
@@ -42,13 +51,17 @@ class Button extends React.Component {
         return (
             <div>
 
-                <h1> Your itmes: {selected}</h1>
+                {this.props.selected}
                 <button
                     style={{ width: "100px", backgroundColor: '#94FACE' }}
-                    onClick={() => {
+                    onClick=
+
+                    {() => {
                         this.addToCart();
-                    }
-                    }
+                        this.props.action(this.props.item);
+
+                    }}
+                // {this.props.action}
                 > add to cart ({howManyInCart})</button>
                 <button
                     style={{ width: "100px", backgroundColor: 'NavajoWhite' }}
