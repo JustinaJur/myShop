@@ -3,39 +3,85 @@ import Item from './Item'
 
 class Button extends React.Component {
     state = {
-        selected: [],
-        howManyInCart: 0,
-        item: ''
+        //paimu kas ateina
+        allSelected: [],
+        //renku cia selected
+        hereSelected: this.props.selected.filter(item => item.name === this.props.item.name)
+
+        //[this.props.selected.filter(item => item.name === this.props.item.name)],
+        //selected: []
     }
 
-    addToCart = () => {
-        //console.log(this.props.item);
-        let selected = this.state.selected;
-        this.setState({
-            selected: [...selected, this.props.item.name],
-            howManyInCart: selected.length + 1
-        })
+    // numberOfItems = 0;
+    //updating only button (adding item)
+    // addToCart = () => {
+    //     this.setState({
+    //         //konkreti preke
+    //         hereSelected: [...this.state.hereSelected, this.props.item],
+    //         //visos prekes
+    //         allSelected: [...this.props.selected, this.props.item]
+    //     });
+    // }
 
-        // var selectedHA = selected.filter((item) => item === this.props.item.name);
-        // this.setState({
-        //     howManyInCart: selectedHA.length
-        // })
-    }
+    //LOCAL updating only button (removing item)
+    // removeFromCart() {
+    //     let selected = this.state.hereSelected;
+    //     let array = [...selected]; // make a separate copy of the array
+    //     let index = array.indexOf(this.props.item)
+    //     console.log(this.props.item)
+    //     if (index !== -1) {
+    //         array.splice(index, 1);
+    //         this.setState({
+    //             hereSelected: array,
+    //             // itemsInCart: selected.length - 1
+    //         });
+    //     }
+    // }
 
 
-    removeFromCart() {
-        let selected = this.state.selected;
-        let array = [...selected]; // make a separate copy of the array
-        let index = array.indexOf(this.props.item.name)
-        if (index !== -1) {
-            array.splice(index, 1);
-            this.setState({
-                selected: array,
-                howManyInCart: selected.length - 1
-            });
+
+    updateButton = () => {
+        if (this.props.name === "add to cart") {
+            let newSelected = this.props.selected.filter(item => item.name == this.props.item.name)
+            //console.log(newSelected)
+            this.setState((prevState, props) => ({
+                hereSelected: newSelected
+            }))
+
+            // this.setState({
+            //     hereSelected: newSelected
+            // })
+            //console.log(newSelected)
         }
+        else {
+            // let firstFound = this.props.hereSelected.filter(item => item.name == this.props.item.name)
+            // let array = [...this.state.hereSelected];
+            // //let found = array.find(item => item.name === this.props.item.name);
+            // if (firstFound) {
+            //     let index = array.findIndex(el => el.name == this.props.name);
+            //     array.splice(index, 1)
 
+            //     // this.setState((prevState, props) => ({
+            //     //     hereSelected: array
+            //     // })
+            //     this.setState({
+            //         hereSelected: array
+            //     })
 
+            //     console.log(this.props.selected)
+            //     console.log(this.state.hereSelected)
+            // }
+
+            // let firstFound = this.props.hereSelected.filter(item => item.name == this.props.item.name)
+            let array = [...this.state.selected];
+            //let found = array.find(item => item.name === this.props.item.name);
+            //if (firstFound) {
+            let index = array.findIndex(el => el.name == this.props.item);
+            array.splice(index, 1)
+            this.setState((prevState, props) => ({
+                hereSelected: array
+            }))
+        }
     }
 
 
@@ -44,28 +90,39 @@ class Button extends React.Component {
 
     render() {
 
-        let selected = this.state.selected;
-        let howManyInCart = this.state.howManyInCart;
+        let numberOfItems = this.state.hereSelected.length;
 
 
         return (
-            <div>
+            <div className="buttons">
 
-                {this.props.selected}
-                <button
-                    style={{ width: "100px", backgroundColor: '#94FACE' }}
+                <button className="right"
+                    style={{ width: "100px", height: '25px', backgroundColor: 'greenyellow', border: 'none' }}
                     onClick=
-
                     {() => {
-                        this.addToCart();
-                        this.props.action(this.props.item);
+                        this.updateButton()
+                        // this.addToCart();
+                        //<-- gauna item is Item kom ir SIUNCIA clicked ITEM I KITA KOMPONENTA-Item-App-Cart 
+                        this.props.addItem(this.props.item);
 
                     }}
-                // {this.props.action}
-                > add to cart ({howManyInCart})</button>
-                <button
-                    style={{ width: "100px", backgroundColor: 'NavajoWhite' }}
-                    onClick={() => this.removeFromCart()}>
+
+                //<--duotas name rankiniu budu
+                > {this.props.name}
+                    ({numberOfItems})</button>
+
+
+
+
+                <button className="left"
+                    style={{ width: "100px", height: '25px', backgroundColor: 'salmon', border: 'none' }}
+
+                    //using here
+                    onClick={() => {
+                        // this.removeFromCart();
+                        this.props.removeItem(this.props.item);
+                        this.updateButton()
+                    }}>
                     Remove item
                     </button>
             </div >

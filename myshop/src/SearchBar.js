@@ -28,7 +28,7 @@ class SearchBar extends Component {
                         value={this.props.value}
                         //we send input to App
                         onChange={this.props.handleChangeValue}
-                        placeholder="Search by name..."
+                        placeholder="Search products..."
                     />
                 </form>
                 {/* <p>{this.state.ieskoma}</p> */}

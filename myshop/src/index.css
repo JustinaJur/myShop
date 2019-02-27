@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:LightCyan;
+  background-color:lavenderblush;
 }
 
 .products-container{
@@ -18,6 +18,11 @@ margin: 15px 25px;
 
 }
 
+h1{
+  color: dimgray;
+
+
+}
 
 .component{
 display: grid;
@@ -26,40 +31,91 @@ display: grid;
 }
 .header{
   text-align: center;
+
+
 }
 .SearchBar{
   margin: 25px;
+  color: dimgray;
+  margin: 10px;
+ 
 }
 
 img{
-width: 250px;
+width: 300px;
 height: 100px;
 }
 
 h3, h4{
   margin: 0;
-}
-.sticky {
-  position: sticky;
+  text-align: center;
+  padding: 20px;
 }
 
-.cart{
-margin: 25px;
-background-color: white;
-}
 
 .nav{
 display: grid;
 grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
-background-color: PaleTurquoise;
+place-items: center;
+background-color: lightsteelblue;
 height: 30px;
-color: blue;
+color: brown;
+padding: 10px;
+margin: 0;
+text-transform: uppercase;
+list-style-type: none;
+}
 
+th{
+  text-transform: uppercase;
 }
 
 a{
   text-decoration:none;
-  color: blue;
+  color: brown;
+  font-weight: 700;
+  font-size: 20px;
 }
 
+.cart{
+  margin: 25px;
+  background-color:LightCyan;
+  display: grid;
+  }
+  
+
+
+tr{
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-template-rows: 1fr;
+place-items: center;
+padding: 10px;
+background-color: lightblue;
+  }
+
+  table{
+    border: 2px solid black;
+  }
+
+  a:hover, a:focus { 
+    color: red;
+  }
+
+  .buttons{
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+  }
+  .right{
+    place-self: end;
+  }
+
+  .left{
+    place-self: start;
+  }
+ 
+
+  
 

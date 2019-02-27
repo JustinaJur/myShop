@@ -1,41 +1,29 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 //import Router from './Router'
-
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-
 // import './App.css';
 import './index.css';
 import ItemContainer from './Listing/ItemContainer'
 import Header from './Header'
 import SearchBar from './SearchBar'
 import Item from './Listing/Item'
-
-
 import Cart from "./Listing/Cart";
 import Contacts from "./Listing/Contacts";
 import Error from "./Listing/Error";
 import Button from "./Listing/Button";
+import Navigation from './Navigation'
+//import AddButton from './Listing/ButtonAdd'
 
 
 
-//instaed of creating separate component
-const Navigation = (props) => <nav>
-  <ul className="nav">
-
-    <li><NavLink to="/"> products </NavLink></li>
-    <li><NavLink to="/Cart"> Cart </NavLink> </li>
-    <li><NavLink to="/Contacts"> Contacts </NavLink> </li>
-  </ul>
-</nav>
 
 class App extends Component {
   state = {
     search: '',
     selected: [],
-  }
+    hereSelected: []
 
+  }
 
 
   //get value from input in SEARCHBAR component
@@ -46,13 +34,38 @@ class App extends Component {
     })
   }
 
-  handler = newSelection => {
-    console.log(newSelection.name);
-    let selected = this.state.selected;
+  //add item to selected, kuri pasiima cart
+  addItem = newSelection => {
+    console.log(newSelection);
     this.setState({
-      selected: [...selected, newSelection.name]
+      selected: [...this.state.selected, newSelection],
+      hereSelected: [...this.state.hereSelected, newSelection]
     });
   }
+
+  removeItem = (e) => {
+    console.log(this.state.selected)
+    let selected = this.state.selected;
+    let array = [...selected];
+    //find out if object is in array
+    let found = array.find(el => el.name === e.name);
+    if (found) {
+      //find index of object
+      let index = array.findIndex(el => el.name == e.name);
+      //remove object from array
+      array.splice(index, 1)
+      //setina state tik local lygmeniu,updatina tik tam kartui, bet ne bendrai
+      this.setState((prevState, props) => ({
+        selected: array,
+        //selectedAll: []
+        //itemsInCart: selected.length - 1
+      }))
+    }
+    console.log(this.state.selected)
+  }
+
+
+
 
 
   render() {
@@ -62,8 +75,8 @@ class App extends Component {
       <div>
         < BrowserRouter >
           <div>
-
-            <Header />
+            <Header
+            />
             <SearchBar
               //app gets the input value from searchbar
               handleChangeValue={this.handleChangeValue}
@@ -73,14 +86,40 @@ class App extends Component {
             {/* <ItemContainer
               search={this.state.search}
             /> */}
-
             <Switch>
               {/* <Route path="/" component={Item} search={this.state.search} exact /> */}
+              <Route path="/Cart" render={props =>
+                <Cart
+                  // siunciu i cart 
+                  selected={this.state.selected}
+                  //siunciu i cart
+                  search={this.state.search}
+                  hereSelected={this.state.hereSelected}
+                  newSelection={this.props.newSelection}
 
-              <Route exact path="/" render={props => <Item handler={this.handler} search={this.state.search} {...props} />} />
+
+                  removeItem={this.removeItem}
+                  addItem={this.addItem}
+
+                  {...props} />}
+              />
+
+              <Route exact path="/" render={props =>
+                <Item
+                  //gaunu is button paspausta item
+                  addItem={this.addItem}
+                  removeItem={this.removeItem}
+
+                  //siunciu i item to filter items
+                  search={this.state.search}
+                  //siunciu i button neaisku kam 
+                  selected={this.state.selected}
+
+                  {...props} />}
+              />
 
 
-              <Route path="/Cart" render={props => <Cart selected={this.state.selected} {...props} />} />
+
 
               {/* <Route path="/Cart" component={Cart} selected={this.state.selected} /> */}
 
