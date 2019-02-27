@@ -5,7 +5,10 @@ class Contacts extends React.Component {
 
     render() {
         return (
-            <div>labas cia contacts, leave a message for us </div>
+            <div className="contacts">
+                <p>Thank you for showing interest in our products.</p>
+                <p>You can find us every Sunday at the central market.</p>
+            </div >
         )
     }
 }

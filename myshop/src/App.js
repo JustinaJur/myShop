@@ -1,50 +1,38 @@
 import React, { Component } from 'react';
-//import Router from './Router'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import './App.css';
 import './index.css';
-import ItemContainer from './Listing/ItemContainer'
+import Navigation from './Navigation'
 import Header from './Header'
 import SearchBar from './SearchBar'
-import Item from './Listing/Item'
 import Cart from "./Listing/Cart";
 import Contacts from "./Listing/Contacts";
 import Error from "./Listing/Error";
+import Item from './Listing/Item'
 import Button from "./Listing/Button";
-import Navigation from './Navigation'
-//import AddButton from './Listing/ButtonAdd'
-
-
 
 
 class App extends Component {
   state = {
     search: '',
-    selected: [],
-    hereSelected: []
-
+    selected: []
   }
 
-
-  //get value from input in SEARCHBAR component
+  //get value from input in SEARCHBAR 
   handleChangeValue = e => {
-    console.log(e.target.value);
     this.setState({
       search: e.target.value.toLowerCase(),
     })
   }
 
-  //add item to selected, kuri pasiima cart
+  //add item to selected
   addItem = newSelection => {
-    console.log(newSelection);
     this.setState({
-      selected: [...this.state.selected, newSelection],
-      hereSelected: [...this.state.hereSelected, newSelection]
+      selected: [...this.state.selected, newSelection]
     });
   }
 
+  //remove item from selected
   removeItem = (e) => {
-    console.log(this.state.selected)
     let selected = this.state.selected;
     let array = [...selected];
     //find out if object is in array
@@ -54,14 +42,10 @@ class App extends Component {
       let index = array.findIndex(el => el.name == e.name);
       //remove object from array
       array.splice(index, 1)
-      //setina state tik local lygmeniu,updatina tik tam kartui, bet ne bendrai
       this.setState((prevState, props) => ({
-        selected: array,
-        //selectedAll: []
-        //itemsInCart: selected.length - 1
+        selected: array
       }))
     }
-    console.log(this.state.selected)
   }
 
 
@@ -69,7 +53,6 @@ class App extends Component {
 
 
   render() {
-    let selected = this.state.selected;
 
     return (
       <div>
@@ -78,55 +61,31 @@ class App extends Component {
             <Header
             />
             <SearchBar
-              //app gets the input value from searchbar
               handleChangeValue={this.handleChangeValue}
-            // value={this.state.value}
             />
             <Navigation />
-            {/* <ItemContainer
-              search={this.state.search}
-            /> */}
             <Switch>
-              {/* <Route path="/" component={Item} search={this.state.search} exact /> */}
               <Route path="/Cart" render={props =>
                 <Cart
-                  // siunciu i cart 
-                  selected={this.state.selected}
-                  //siunciu i cart
                   search={this.state.search}
-                  hereSelected={this.state.hereSelected}
-                  newSelection={this.props.newSelection}
-
-
-                  removeItem={this.removeItem}
+                  selected={this.state.selected}
                   addItem={this.addItem}
+                  removeItem={this.removeItem}
 
                   {...props} />}
               />
 
               <Route exact path="/" render={props =>
                 <Item
-                  //gaunu is button paspausta item
+                  search={this.state.search}
+                  selected={this.state.selected}
                   addItem={this.addItem}
                   removeItem={this.removeItem}
 
-                  //siunciu i item to filter items
-                  search={this.state.search}
-                  //siunciu i button neaisku kam 
-                  selected={this.state.selected}
-
                   {...props} />}
               />
-
-
-
-
-              {/* <Route path="/Cart" component={Cart} selected={this.state.selected} /> */}
-
-
               <Route path="/Contacts" component={Contacts} />
               <Route component={Error} />
-
             </Switch>
           </div>
         </BrowserRouter >

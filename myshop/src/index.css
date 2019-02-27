@@ -1,112 +1,99 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Quattrocento', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color:lavenderblush;
 }
-
-.products-container{
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-gap: 40px;
-margin: 15px 25px;
-
-
-}
-
-h1{
-  color: dimgray;
-
-
-}
-
-.component{
-display: grid;
-
-
-}
-.header{
-  text-align: center;
-
-
-}
-.SearchBar{
-  margin: 25px;
-  color: dimgray;
-  margin: 10px;
- 
-}
-
-img{
-width: 300px;
-height: 100px;
-}
-
 h3, h4{
   margin: 0;
   text-align: center;
   padding: 20px;
 }
-
-
-.nav{
-display: grid;
-grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
-place-items: center;
-background-color: lightsteelblue;
-height: 30px;
-color: brown;
-padding: 10px;
-margin: 0;
-text-transform: uppercase;
-list-style-type: none;
+h1{
+  color: dimgray; 
 }
-
 th{
   text-transform: uppercase;
 }
 
+tr{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  place-items: center;
+  padding: 10px;
+  background-color: lightblue;
+}
+
+table{
+  border: 2px solid black;
+}
 a{
   text-decoration:none;
   color: brown;
   font-weight: 700;
   font-size: 20px;
 }
+a:hover, a:focus { 
+  color: red;
+}
+input[type="text"] {
+  height: 22px;
+  font-size: 0.9rem;
+}
+img{
+  width: 300px;
+  height: 100px;
+}
+.products-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+  margin: 15px 25px;
+}
+.component{
+  display: grid;
+ }
+.header{
+  text-align: center;
+}
+.SearchBar{
+  margin: 25px;
+  color: dimgray;
+  margin: 10px;
+}
+.nav{
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
+  place-items: center;
+  background-color: lightsteelblue;
+  height: 30px;
+  color: brown;
+  padding: 10px;
+  margin: 0;
+  text-transform: uppercase;
+  list-style-type: none;
+}
 
 .cart{
-  margin: 25px;
-  background-color:LightCyan;
-  display: grid;
+    margin: 25px;
+    background-color:LightCyan;
+    display: grid;
   }
   
-
-
-tr{
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: 1fr;
-place-items: center;
-padding: 10px;
-background-color: lightblue;
-  }
-
-  table{
-    border: 2px solid black;
-  }
-
-  a:hover, a:focus { 
-    color: red;
-  }
-
   .buttons{
     display: grid;
     grid-column-gap: 10px;
     grid-template-columns: 1fr 1fr;
     place-items: center;
+  }
+  .ButtonAdd, .ButtonRemove {
+    font-size: 20px;
+    font-weight: 1000;
+    color: SteelBlue;
+    border: 2px solid SteelBlue;
   }
   .right{
     place-self: end;
@@ -114,6 +101,15 @@ background-color: lightblue;
 
   .left{
     place-self: start;
+  }
+
+  .contacts, h4 {
+    margin-top: 50px;
+    display: grid;
+    place-items:center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-align: center;
   }
  
 

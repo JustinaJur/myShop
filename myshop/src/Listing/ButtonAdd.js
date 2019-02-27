@@ -1,22 +1,14 @@
 import React from 'react';
 
-
 class ButtonAdd extends React.Component {
-
     render() {
-
-
         return (
             <div>
-
-                <button
-                    style={{ width: "100px", backgroundColor: 'NavajoWhite' }}
-
+                <button className="ButtonAdd"
+                    style={{ width: "100px", backgroundColor: 'greenyellow' }}
                     onClick={() => {
-
+                        //send clicked item
                         this.props.addItem(this.props.item)
-                        console.log(this.props.item)
-
                     }}
                 >
                     {this.props.name}
@@ -25,9 +17,5 @@ class ButtonAdd extends React.Component {
         )
     }
 }
-
-
-
-
 
 export default ButtonAdd

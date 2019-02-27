@@ -2,19 +2,6 @@ import React, { Component } from 'react';
 
 
 class SearchBar extends Component {
-    // constructor() {
-    //     super()
-    //     this.state = {
-    //         // ieskoma: ''
-    //     }
-
-    // }
-
-    // onFormSubmit = (ev) => {
-    //     ev.preventDefault();
-    // console.log(this.state.ieskoma);
-    // this.props.onSubmit(this.state.ieskoma);
-
 
     render() {
         return (
@@ -26,13 +13,11 @@ class SearchBar extends Component {
                     <input
                         type="text"
                         value={this.props.value}
-                        //we send input to App
+                        //send input to App
                         onChange={this.props.handleChangeValue}
                         placeholder="Search products..."
                     />
                 </form>
-                {/* <p>{this.state.ieskoma}</p> */}
-
             </div>
         );
     }

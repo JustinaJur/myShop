@@ -1,29 +1,21 @@
 import React from 'react';
-import duomenys from '../products.json'
+import data from '../products.json'
 import Button from "./Button"
-//import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import addButton from './ButtonAdd'
+
+
 
 class Item extends React.Component {
     render() {
-        //let selected = `${this.props.selected}`
-        let filteredDuomenys = duomenys.products.filter((item) =>
+        let filteredData = data.products.filter((item) =>
             item.name.toLowerCase().indexOf(this.props.search) !== -1
             || item.description.toLowerCase().indexOf(this.props.search) !== -1);
 
 
-
-
-
-
         return (
             <div>
+
                 <div className="products-container">
-                    {/* {duomenys.products
-                        .filter((item) =>
-                            item.name.toLowerCase().indexOf(this.props.search) !== -1
-                            || item.description.toLowerCase().indexOf(this.props.search) !== -1) */}
-                    {filteredDuomenys.map((item) =>
+                    {filteredData.map(item =>
                         <div>
                             <h3> {item.name}</h3>
                             <img
@@ -33,8 +25,9 @@ class Item extends React.Component {
                             {item.description}
                             <h3> {item.price} EUR</h3>
 
+
                             <Button
-                                // <--siunciu paspausta item
+                                //<---send clicked items to App                         
                                 addItem={this.props.addItem}
                                 removeItem={this.props.removeItem}
 
@@ -54,7 +47,6 @@ class Item extends React.Component {
         )
     }
 }
-
 
 
 
