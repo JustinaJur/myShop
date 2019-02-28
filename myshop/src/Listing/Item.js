@@ -12,7 +12,8 @@ class Item extends React.Component {
             || item.description.toLowerCase().indexOf(this.props.search) !== -1);
 
         // let filteredSelected = this.props.selected.filter(itemm => itemm.name === this.props.item.name)
-        // let numberOfItems = filteredSelected.length;
+        // numberOfItems = filteredSelected.length;
+
 
         return (
             <div>
@@ -34,6 +35,7 @@ class Item extends React.Component {
                                     addItem={this.props.addItem}
                                     selected={this.props.selected}
                                     name="Add Item"
+                                // name={`add ${numberOfItems}`}
                                 />
 
                                 < ButtonRemove

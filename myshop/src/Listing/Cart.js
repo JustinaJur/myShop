@@ -26,11 +26,13 @@ class Cart extends React.Component {
                 <div className="cart" >
                     < table >
                         <thead>
-                            <tr>
-                                <th>products</th>
-                                <th>quantity</th>
-                                <th>price</th>
-                            </tr>
+                            {/* <tr> */}
+                            <th>products</th>
+                            <th>quantity</th>
+                            <th>price</th>
+                            <th>add</th>
+                            <th>remove</th>
+                            {/* </tr> */}
                         </thead>
                         {reduced.map(item =>
                             < tr className="tableRow" >

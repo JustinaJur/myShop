@@ -18,10 +18,9 @@ th{
   text-transform: uppercase;
 }
 
-tr{
+thead,  .tableRow {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-columns: repeat( 5, 1fr);
   place-items: center;
   padding: 10px;
   background-color: lightblue;
@@ -43,8 +42,8 @@ input[type="text"] {
   height: 22px;
   font-size: 0.9rem;
 }
-img{
-  width: 300px;
+img{ 
+  width: 100%;
   height: 100px;
 }
 button{
@@ -54,20 +53,33 @@ button{
   width: 100px;
   min-height: 30px;
 }
+.buttons{
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+}
 .cart button{
   font-size: 20px;
   font-weight: 800;
   border: 2px solid Black;
 }
+.cart{
+  margin: 25px;
+  background-color:LightCyan;
+  display: grid;
+  align-self: center;
+}
+
 .products-container{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
   grid-gap: 40px;
   margin: 15px 25px;
 }
-.component{
+.products-container div{
   display: grid;
- }
+}
 .header{
   text-align: center;
 }
@@ -78,30 +90,15 @@ button{
 }
 .nav{
   display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   place-items: center;
   background-color: lightsteelblue;
-  height: 30px;
   color: brown;
   padding: 10px;
   margin: 0;
   text-transform: uppercase;
   list-style-type: none;
 }
-
-.cart{
-    margin: 25px;
-    background-color:LightCyan;
-    display: grid;
-  }
-  
-  .buttons{
-    display: grid;
-    grid-column-gap: 10px;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
- 
-  }
 
   .contacts, h4 {
     margin-top: 50px;
@@ -112,6 +109,13 @@ button{
     text-align: center;
   }
  
-
+  @media screen and (max-width: 600px){
+    
+    th, .cart button{
+        font-size: 10px; 
+        width: 50px;
+        height: 20px;
+    }  
+	  }
   
 
