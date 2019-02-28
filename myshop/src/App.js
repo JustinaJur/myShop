@@ -8,7 +8,6 @@ import Cart from "./Listing/Cart";
 import Contacts from "./Listing/Contacts";
 import Error from "./Listing/Error";
 import Item from './Listing/Item'
-import Button from "./Listing/Button";
 
 
 class App extends Component {

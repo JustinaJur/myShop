@@ -38,20 +38,21 @@ class Cart extends React.Component {
                                 <td>{item.quantity}</td>
                                 <td>{Number(item.price * item.quantity).toFixed(2)} EUR</td>
 
+                                <ButtonAdd
+                                    item={item}
+                                    addItem={this.props.addItem}
+                                    selected={this.props.selected}
+                                    name="+"
+                                />
                                 < ButtonRemove
                                     item={item}
                                     removeItem={this.props.removeItem}
                                     name="-"
                                 />
 
-                                <ButtonAdd
-                                    item={item}
-                                    addItem={this.props.addItem}
-                                    name="+"
-                                />
                                 <div className="button">{this.props.children}</div>
                             </tr>
-                        ).sort()}
+                        )}
                     </table >
                 </div >
 

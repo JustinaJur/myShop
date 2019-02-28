@@ -47,6 +47,18 @@ img{
   width: 300px;
   height: 100px;
 }
+button{
+  font-size: 12px;
+  font-weight: 600;
+  border: 2px solid Black;
+  width: 100px;
+  min-height: 30px;
+}
+.cart button{
+  font-size: 20px;
+  font-weight: 800;
+  border: 2px solid Black;
+}
 .products-container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -88,19 +100,7 @@ img{
     grid-column-gap: 10px;
     grid-template-columns: 1fr 1fr;
     place-items: center;
-  }
-  .ButtonAdd, .ButtonRemove {
-    font-size: 20px;
-    font-weight: 1000;
-    color: SteelBlue;
-    border: 2px solid SteelBlue;
-  }
-  .right{
-    place-self: end;
-  }
-
-  .left{
-    place-self: start;
+ 
   }
 
   .contacts, h4 {

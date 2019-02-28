@@ -1,6 +1,7 @@
 import React from 'react';
 import data from '../products.json'
-import Button from "./Button"
+import ButtonAdd from "./ButtonAdd"
+import ButtonRemove from "./ButtonRemove"
 
 
 
@@ -10,6 +11,8 @@ class Item extends React.Component {
             item.name.toLowerCase().indexOf(this.props.search) !== -1
             || item.description.toLowerCase().indexOf(this.props.search) !== -1);
 
+        // let filteredSelected = this.props.selected.filter(itemm => itemm.name === this.props.item.name)
+        // let numberOfItems = filteredSelected.length;
 
         return (
             <div>
@@ -25,19 +28,20 @@ class Item extends React.Component {
                             {item.description}
                             <h3> {item.price} EUR</h3>
 
+                            <div className="buttons">
+                                <ButtonAdd
+                                    item={item}
+                                    addItem={this.props.addItem}
+                                    selected={this.props.selected}
+                                    name="Add Item"
+                                />
 
-                            <Button
-                                //<---send clicked items to App                         
-                                addItem={this.props.addItem}
-                                removeItem={this.props.removeItem}
-
-
-                                // -->
-                                item={item}
-                                selected={this.props.selected}
-                                //-->
-                                name="add to cart"
-                            />
+                                < ButtonRemove
+                                    item={item}
+                                    removeItem={this.props.removeItem}
+                                    name="Remove Item"
+                                />
+                            </div>
                             <div className="button">{this.props.children}</div>
                         </div>
                     )
