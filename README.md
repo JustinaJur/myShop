@@ -5,9 +5,9 @@ This is an online shop with few pages. In one - there is a list products to be o
 in another - a cart (list and quantity of products, total price). In both pages products can be searched.
 Website is completely responsive, renders well on screens of different sizes. 
 
-##Technologies
+## Technologies
 Project is made with: React,
 HTML, CSS GRID
 
-##Setup
+## Setup
 Download the repository, then in the terminal navigate to the project directory and enter npm start. 
