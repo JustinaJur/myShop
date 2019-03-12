@@ -12,7 +12,6 @@ class ButtonAdd extends React.Component {
                     onClick={() => {
                         //send clicked item
                         this.props.addItem(this.props.item)
-
                     }}
                 >
                     {this.props.name}

@@ -1,15 +1,14 @@
-import React from 'react'
-import ButtonRemove from './ButtonRemove'
-import ButtonAdd from './ButtonAdd'
+import React from "react";
+import ButtonRemove from "./ButtonRemove";
+import ButtonAdd from "./ButtonAdd";
 
 class Cart extends React.Component {
 
-
-    render() {
+    renderCart = () => {
         let reduced = this.props.selected.reduce((acc, item) => {
-            //find first matching item in acc and set it as value of filteredItem
+            // find first matching item in acc and set it as value of filteredItem
             let filteredItem = acc.filter(item2 => item2.id === item.id)[0]
-            //if filteredItem is already in acc, increase its quantity by 1 
+            // if filteredItem is already in acc, increase its quantity by 1 
             if (filteredItem !== undefined) {
                 filteredItem.quantity++
             }
@@ -17,9 +16,9 @@ class Cart extends React.Component {
             else { acc.push({ ...item, quantity: 1 }) }
             return acc
         }, []).filter((item) =>
-            item.name.toLowerCase().indexOf(this.props.search) !== -1)
+            item.name.toLowerCase().indexOf(this.props.search) !== -1);
 
-        let price = reduced.map(item => item.price * item.quantity)
+        let price = reduced.map(item => item.price * item.quantity);
 
         if (this.props.selected.length > 0)
             return (
@@ -39,7 +38,6 @@ class Cart extends React.Component {
                                 <td>{item.name}</td>
                                 <td>{item.quantity}</td>
                                 <td>{Number(item.price * item.quantity).toFixed(2)} EUR</td>
-
                                 <ButtonAdd
                                     item={item}
                                     addItem={this.props.addItem}
@@ -51,7 +49,6 @@ class Cart extends React.Component {
                                     removeItem={this.props.removeItem}
                                     name="-"
                                 />
-
                                 <div className="button">{this.props.children}</div>
                             </tr>
                         )}
@@ -62,6 +59,10 @@ class Cart extends React.Component {
         else return (
             <h4> Your cart is empty</h4>
         )
+    }
+
+    render() {
+        return <div> {this.renderCart()} </div>
     }
 }
 

@@ -7,7 +7,7 @@ class ButtonRemove extends React.Component {
                 <button
                     style={{ backgroundColor: 'tomato' }}
                     onClick={() => {
-                        //send clicked item
+                        // send clicked item
                         this.props.removeItem(this.props.item);
                     }}
                 >

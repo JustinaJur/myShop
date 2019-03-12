@@ -1,23 +1,21 @@
-import React from 'react';
-import data from '../products.json'
-import ButtonAdd from "./ButtonAdd"
-import ButtonRemove from "./ButtonRemove"
-
+import React from "react";
+import data from "../products.json";
+import ButtonAdd from "./ButtonAdd";
+import ButtonRemove from "./ButtonRemove";
 
 
 class Item extends React.Component {
-    render() {
+
+
+    renderItems = () => {
         let filteredData = data.products.filter((item) =>
             item.name.toLowerCase().indexOf(this.props.search) !== -1
             || item.description.toLowerCase().indexOf(this.props.search) !== -1);
 
         // let filteredSelected = this.props.selected.filter(itemm => itemm.name === this.props.item.name)
         // numberOfItems = filteredSelected.length;
-
-
         return (
             <div>
-
                 <div className="products-container">
                     {filteredData.map(item =>
                         <div>
@@ -28,16 +26,13 @@ class Item extends React.Component {
                             />
                             {item.description}
                             <h3> {item.price} EUR</h3>
-
                             <div className="buttons">
                                 <ButtonAdd
                                     item={item}
                                     addItem={this.props.addItem}
                                     selected={this.props.selected}
                                     name="Add Item"
-                                // name={`add ${numberOfItems}`}
                                 />
-
                                 < ButtonRemove
                                     item={item}
                                     removeItem={this.props.removeItem}
@@ -52,10 +47,11 @@ class Item extends React.Component {
             </div >
         )
     }
+
+    render() {
+        return <div> {this.renderItems()}</div>
+    }
 }
-
-
-
 
 
 export default Item
