@@ -11,3 +11,4 @@ HTML, CSS GRID
 
 ## Setup
 Download the repository, then in the terminal navigate to the project directory and enter npm start. 
+At Heroku server: https://protected-escarpment-43201.herokuapp.com/
