@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import "./index.css";
 import Header from "./Containers/Home/Header";
-import SearchBar from "./SearchBar";
+import SearchBar from "./Components/SearchBar/SearchBar";
 import Navigation from "./Containers/Navigation";
 import Cart from "./Containers/Cart/Cart";
 import Contacts from "./Containers/Cart/Contacts";

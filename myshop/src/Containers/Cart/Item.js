@@ -1,9 +1,19 @@
 import React from "react";
 
 import data from "../../products.json";
-import Button from "../../Components/Button";
+import Button from "../../Components/Button/Button";
 
 class Item extends React.Component {
+  renderNumberOfItems = item => {
+    const { selected } = this.props;
+
+    const numberOfItems =
+      selected && selected.filter(product => product.name === item.name).length;
+    const finalNumberOfItems = numberOfItems > 0 ? numberOfItems : 0;
+
+    return finalNumberOfItems;
+  };
+
   renderItems = () => {
     const { search, addItem, selected, removeItem } = this.props;
 
@@ -28,6 +38,7 @@ class Item extends React.Component {
                 selected={selected}
                 name="Add Item"
                 color="greenyellow"
+                numberOfItems={this.renderNumberOfItems(item)}
               />
               <Button
                 item={item}
