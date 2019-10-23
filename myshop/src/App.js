@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import "./index.css";
 import Header from "./Containers/Home/Header";
 import SearchBar from "./SearchBar";
@@ -32,7 +33,7 @@ class App extends Component {
     let array = [...selected];
     let found = array.find(el => el.name === e.name);
     if (found) {
-      let index = array.findIndex(el => el.name == e.name);
+      let index = array.findIndex(el => el.name === e.name);
       array.splice(index, 1);
       this.setState((prevState, props) => ({
         selected: array

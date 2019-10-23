@@ -5,7 +5,7 @@ import Button from "../../Components/Button";
 
 class Item extends React.Component {
   renderItems = () => {
-    const { search, addItem, selected, children, removeItem } = this.props;
+    const { search, addItem, selected, removeItem } = this.props;
 
     let filteredData = data.products.filter(
       item =>
@@ -36,7 +36,6 @@ class Item extends React.Component {
                 color="tomato"
               />
             </div>
-            <div className="button">{children}</div>
           </div>
         ))}
       </div>

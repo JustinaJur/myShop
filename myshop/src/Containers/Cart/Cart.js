@@ -1,6 +1,6 @@
 import React from "react";
-import ButtonRemove from "../../Components/ButtonRemove";
-import ButtonAdd from "../../Components/ButtonAdd";
+
+import Button from "../../Components/Button";
 
 class Cart extends React.Component {
   renderCart = () => {
@@ -21,48 +21,45 @@ class Cart extends React.Component {
         item => item.name.toLowerCase().indexOf(this.props.search) !== -1
       );
 
-    let price = reduced.map(item => item.price * item.quantity);
-
     if (selected.length > 0)
       return (
         <div className="cart">
           <table>
             <thead>
-              {/* <tr> */}
               <th>products</th>
               <th>quantity</th>
               <th>price</th>
               <th>add</th>
               <th>remove</th>
-              {/* </tr> */}
             </thead>
             {reduced.map(item => (
               <tr className="tableRow">
                 <td>{item.name}</td>
                 <td>{item.quantity}</td>
                 <td>{Number(item.price * item.quantity).toFixed(2)} EUR</td>
-                <ButtonAdd
+                <Button
                   item={item}
-                  addItem={this.props.addItem}
+                  handleSelection={this.props.addItem}
                   selected={this.props.selected}
                   name="+"
+                  color="greenyellow"
                 />
-                <ButtonRemove
+                <Button
                   item={item}
-                  removeItem={this.props.removeItem}
+                  handleSelection={this.props.removeItem}
                   name="-"
+                  color="tomato"
                 />
-                <div className="button">{this.props.children}</div>
               </tr>
             ))}
           </table>
         </div>
       );
-    else return <h4> Your cart is empty</h4>;
+    else return <h4>Your cart is empty</h4>;
   };
 
   render() {
-    return <div> {this.renderCart()} </div>;
+    return this.renderCart();
   }
 }
 
