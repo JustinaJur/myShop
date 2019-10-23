@@ -9,7 +9,7 @@ const Router = () => (
   <Switch>
     <Route path="/" component={ItemContainer} exact />
     <Route path="/Cart" component={Cart} />
-    <Route path="/" component={Contacts} />
+    <Route path="/Contacts" component={Contacts} />
   </Switch>
 );
 
