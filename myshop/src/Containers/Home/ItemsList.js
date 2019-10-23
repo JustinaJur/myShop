@@ -3,24 +3,25 @@ import React from "react";
 import data from "../../products.json";
 import Button from "../../Components/Button/Button";
 
-class Item extends React.Component {
+class ItemsList extends React.Component {
   renderNumberOfItems = item => {
-    const { selected } = this.props;
+    const { selectedItems } = this.props;
 
     const numberOfItems =
-      selected && selected.filter(product => product.name === item.name).length;
+      selectedItems &&
+      selectedItems.filter(product => product.name === item.name).length;
     const finalNumberOfItems = numberOfItems > 0 ? numberOfItems : 0;
 
     return finalNumberOfItems;
   };
 
   renderItems = () => {
-    const { search, addItem, selected, removeItem } = this.props;
+    const { searchedItem, addItem, selectedItems, removeItem } = this.props;
 
     let filteredData = data.products.filter(
       item =>
-        item.name.toLowerCase().indexOf(search) !== -1 ||
-        item.description.toLowerCase().indexOf(search) !== -1
+        item.name.toLowerCase().indexOf(searchedItem) !== -1 ||
+        item.description.toLowerCase().indexOf(searchedItem) !== -1
     );
 
     return (
@@ -35,7 +36,7 @@ class Item extends React.Component {
               <Button
                 item={item}
                 handleSelection={addItem}
-                selected={selected}
+                selectedItems={selectedItems}
                 name="Add Item"
                 color="greenyellow"
                 numberOfItems={this.renderNumberOfItems(item)}
@@ -58,4 +59,4 @@ class Item extends React.Component {
   }
 }
 
-export default Item;
+export default ItemsList;

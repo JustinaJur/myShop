@@ -4,9 +4,9 @@ import Button from "../../Components/Button/Button";
 
 class Cart extends React.Component {
   renderCart = () => {
-    const { selected } = this.props;
+    const { selectedItems, searchedItem } = this.props;
 
-    let reduced = selected
+    let reduced = selectedItems
       .reduce((acc, item) => {
         let filteredItem = acc.filter(item2 => item2.id === item.id)[0];
 
@@ -17,11 +17,9 @@ class Cart extends React.Component {
         }
         return acc;
       }, [])
-      .filter(
-        item => item.name.toLowerCase().indexOf(this.props.search) !== -1
-      );
+      .filter(item => item.name.toLowerCase().indexOf(searchedItem) !== -1);
 
-    if (selected.length > 0)
+    if (selectedItems.length > 0)
       return (
         <div className="cart">
           <table>
@@ -32,8 +30,8 @@ class Cart extends React.Component {
               <th>add</th>
               <th>remove</th>
             </thead>
-            {reduced.map(item => (
-              <tr className="tableRow">
+            {reduced.map((item, index) => (
+              <tr key={index} className="tableRow">
                 <td>{item.name}</td>
                 <td>{item.quantity}</td>
                 <td>{Number(item.price * item.quantity).toFixed(2)} EUR</td>
